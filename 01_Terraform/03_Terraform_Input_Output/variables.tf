@@ -9,7 +9,7 @@ variable "instance_type" {
 }   
 
 variable "instance_keypair" {
-  description = "AWS EC@ Key Pair"
-  type = "string"
+  description = "AWS EC2 Key Pair"
+  type = string
   default = "terraform-key"
 }
