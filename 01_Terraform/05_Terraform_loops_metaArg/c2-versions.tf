@@ -59,9 +59,12 @@ resource "aws_instance" "myec2" {
   instance_type = var.instance_type_list[0]
   key_name = var.key_pair
   user_data = file("${path.module}/app1-install.sh")
-  count = 5
+  # count = 5
   vpc_security_group_ids = [aws_security_group.web-traffic.id]
+  # accepts maps or set of strings not list ->convert list to set using toset()
+  for_each = toset(data.aws_availability_zones.my_azones.names)
+  availability_zone = each.key
   tags = {
-    Name = "myEC2-${count.index}"
+    Name = "myEC2-${each.key}"
   }
 }
