@@ -1,4 +1,4 @@
-# 1->Get list of az in a spefic region (region in us-east-1)
+# 1->Get list of az in a spefic region (region in us-east-1 configured by the provider)
 # DataSource-1
 data "aws_availability_zones" "my_azones" {
   filter {
